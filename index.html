@@ -4,28 +4,67 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>내 포트폴리오</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gowun+Dodum&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>내 포트폴리오</h1>
+  <header id="intro">
+    <h1>BANSORAM</h1>
+    <p id="target-sentence">[이 페이지는 ___에게 내가 누구인지를 보여주기 위한 것이다]</p>
   </header>
 
+  <section id="disclosure">
+    <h2>공개할 것</h2>
+    <ul id="disclosure-scope">
+      <li tabindex="0">
+        <span class="label">프로젝트 경험</span>
+        <span class="detail">[세부 내용: 어떤 프로젝트를 보여줄지]</span>
+      </li>
+      <li tabindex="0">
+        <span class="label">기술 스택</span>
+        <span class="detail">[세부 내용: 어떤 기술을 다루는지]</span>
+      </li>
+      <li tabindex="0">
+        <span class="label">관심 분야</span>
+        <span class="detail">[세부 내용: 요즘 관심 있는 것]</span>
+      </li>
+    </ul>
+  </section>
+
   <main>
-    <section id="intro">
-      <!-- 대상 문장: 이 페이지는 ___에게 ___를 보여주기 위한 것이다 -->
-    </section>
-
     <section id="strengths">
-      <!-- 강점/취향 3개: 상황·행동·결과 -->
-    </section>
+      <article class="strength">
+        <h2>[강점/취향 1 제목]</h2>
+        <p class="situation"><strong>상황</strong> [언제·어디서 있었는가]</p>
+        <p class="action"><strong>행동</strong> [내가 실제로 무엇을 했는가]</p>
+        <p class="result"><strong>결과</strong> [어떤 결과가 생겼는가]</p>
+      </article>
 
-    <section id="evidence">
-      <!-- 공개 가능한 근거 1개 -->
-    </section>
+      <article class="strength">
+        <h2>[강점/취향 2 제목]</h2>
+        <p class="situation"><strong>상황</strong> [언제·어디서 있었는가]</p>
+        <p class="action"><strong>행동</strong> [내가 실제로 무엇을 했는가]</p>
+        <p class="result"><strong>결과</strong> [어떤 결과가 생겼는가]</p>
+      </article>
 
-    <section id="contact">
-      <!-- 공개하기로 한 연락 방법 -->
+      <article class="strength">
+        <h2>[강점/취향 3 제목]</h2>
+        <p class="situation"><strong>상황</strong> [언제·어디서 있었는가]</p>
+        <p class="action"><strong>행동</strong> [내가 실제로 무엇을 했는가]</p>
+        <p class="result"><strong>결과</strong> [어떤 결과가 생겼는가]</p>
+
+        <button type="button" id="evidence-toggle" aria-expanded="false">자세히 보기</button>
+        <div id="evidence-detail" hidden>
+          [근거: 공개 가능한 만든 것·기록·사진·결과 문장 중 1개]
+        </div>
+      </article>
     </section>
   </main>
+
+  <footer id="contact">
+    [공개하기로 정한 연락 방법만]
+  </footer>
 </body>
 </html>
