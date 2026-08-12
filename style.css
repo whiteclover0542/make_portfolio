@@ -112,7 +112,8 @@ section#disclosure h2 {
 
 #disclosure-scope li:hover .detail,
 #disclosure-scope li:focus .detail,
-#disclosure-scope li:focus-visible .detail {
+#disclosure-scope li:focus-visible .detail,
+#disclosure-scope li:focus-within .detail {
   max-height: 100px;
   opacity: 1;
   margin-top: 10px;
@@ -121,6 +122,12 @@ section#disclosure h2 {
 #disclosure-scope li:focus-visible {
   outline: 2px solid var(--black);
   outline-offset: 3px;
+}
+
+#disclosure-scope li .detail a {
+  color: var(--black);
+  text-decoration: underline;
+  word-break: break-all;
 }
 
 /* strengths */
