@@ -12,26 +12,32 @@
 <body>
   <header id="intro">
     <h1>WHITECLOVER</h1>
-    <p id="target-sentence">이 페이지는 함께 협업할 팀원분들께 제가 누구인지 보여드리기 위해 만들었습니다.</p>
+    <p class="hero-kicker">WHO AM I</p>
+    <p id="hero-role">Security-minded Full-Stack Developer</p>
+    <p class="hero-kicker">WHAT I DO</p>
+    <p id="hero-mission">보안 관점에서 AI를 만들고 검증하며, 풀스택으로 서비스까지 연결합니다.</p>
 
+    <p class="hero-kicker">PROOF</p>
     <div id="hero-highlights">
       <div class="hero-stat">
-        <span class="k">WHO AM I</span>
-        <span class="v">보안을 공부하는 풀스택 개발자</span>
+        <span class="v">0.98%</span>
+        <span class="k">EER · Deepfake Detection</span>
       </div>
       <div class="hero-stat">
-        <span class="k">WHAT I DO</span>
-        <span class="v">보안 관점으로 AI·백엔드 서비스를 만듭니다</span>
+        <span class="v">40/40</span>
+        <span class="k">Crisis Detection</span>
       </div>
       <div class="hero-stat">
-        <span class="k">PROOF</span>
-        <span class="v">딥보이스 탐지 AI, EER 0.98%</span>
+        <span class="v">4.6–4.8</span>
+        <span class="k">G-Eval</span>
       </div>
     </div>
+
+    <p id="target-sentence">이 페이지는 함께 협업할 팀원분들께 제가 누구인지 보여드리기 위해 만들었습니다.</p>
   </header>
 
   <section id="disclosure">
-    <h2>공개할 것</h2>
+    <h2>WORK & SKILLS</h2>
     <ul id="disclosure-scope">
       <li tabindex="0" class="card-featured">
         <span class="label">GitHub</span>
@@ -51,31 +57,31 @@
         </ul>
       </li>
       <li tabindex="0">
-        <span class="label">관심 분야</span>
-        <ul class="detail detail-list">
-          <li><strong>보안</strong> 전공 분야이기도 해서 꾸준히 관심을 가지고 있습니다.</li>
-          <li><strong>AI</strong> 프로젝트에서 직접 다뤄보며 흥미를 느꼈습니다.</li>
-        </ul>
+        <span class="label">Security</span>
+        <div class="detail">
+          <p>AI 서비스의 입력·출력과 사용자 안전을 보안 관점에서 검토합니다.</p>
+        </div>
       </li>
     </ul>
   </section>
 
   <main>
     <section id="strengths">
+      <h2>HOW I WORK</h2>
       <article class="strength">
-        <h2>강점 1 — 완벽주의</h2>
+        <h3>01. 기준을 넘긴 뒤에도 검증합니다</h3>
         <p class="situation"><strong>상황</strong> 여러 팀 개발 프로젝트에서, 이미 팀이 정한 목표 성능(목표치)에 도달한 상태였습니다.</p>
         <p class="action"><strong>행동</strong> 목표치를 채웠다고 끝내지 않고, 더 나은 결과를 위해 계속 점검하고 다듬으며 끝까지 파고들었습니다.</p>
         <p class="result"><strong>결과</strong> 목표치를 넘어서는 수준까지 완성도를 끌어올렸습니다.</p>
 
         <button type="button" class="evidence-toggle" aria-expanded="false" aria-controls="evidence-detail-1">자세히 보기</button>
         <div id="evidence-detail-1" class="evidence-detail" hidden>
-          딥보이스(음성 딥페이크) 탐지 AI 개발 당시, EER(Equal Error Rate, 동일오류율 — 본인을 다른 사람으로 잘못 인식하는 비율과 못 알아보는 비율이 같아지는 지점의 오류율로, 낮을수록 판별 성능이 뛰어남)을 0.98%까지 낮추는 성과를 냈습니다.
+          딥보이스(음성 딥페이크) 탐지 AI 개발 당시, EER 0.98%(Equal Error Rate·동일오류율, 낮을수록 판별 성능이 뛰어남)까지 낮추는 성과를 냈습니다.
         </div>
       </article>
 
       <article class="strength">
-        <h2>강점 2 — 의심과 검증</h2>
+        <h3>02. 결과를 의심하고 직접 검증합니다</h3>
         <p class="situation"><strong>상황</strong> 여러 팀 개발 프로젝트에서, 결과물을 완성한 상태였습니다.</p>
         <p class="action"><strong>행동</strong> 완성됐다고 끝내지 않고, 검증표·결과지표·성능표를 통합해 만들고 골든셋(golden set)과 G-Eval 같은 방법으로 직접 테스트·검증하며 부족한 점을 찾아 보완했습니다.</p>
         <p class="result"><strong>결과</strong> 놓쳤던 오점들을 미리 발견해 고칠 수 있었습니다.</p>
@@ -93,14 +99,16 @@
       </article>
 
       <article class="strength">
-        <h2>강점 3 — 문서 정리</h2>
+        <h3>03. 팀의 상태를 구조화합니다</h3>
         <p class="situation"><strong>상황</strong> 여러 팀 개발 프로젝트에서, 크고 작은 변경 사항이 계속 생기는 상황이었습니다.</p>
-        <p class="action"><strong>행동</strong> Progress·해야 할 일·체크리스트·작업 현황을 항상 정리하며 문서화했습니다.</p>
+        <p class="action"><strong>행동</strong> 프로젝트 진행 상황을 Start → In Progress → Review → Done → Blocked 상태로 구분해 항상 정리하고 공유했습니다.</p>
         <p class="result"><strong>결과</strong> 헷갈리거나 빼먹는 것 없이 순서대로 일을 진행할 수 있었습니다.</p>
 
         <button type="button" class="evidence-toggle" aria-expanded="false" aria-controls="evidence-detail-3">자세히 보기</button>
         <div id="evidence-detail-3" class="evidence-detail" hidden>
+          <p>Progress·해야 할 일·체크리스트·작업 현황을 항상 정리하며 문서화했습니다.</p>
           <p>실제 팀 프로젝트에서 시작 전·진행 중·리뷰 중(PR)·완료·막힘 상태를 색으로 구분한 진행 상태표를 만들어, 팀원들도 한눈에 진행 상황을 파악할 수 있게 관리했습니다.</p>
+          
           <ul class="evidence-list">
             <li><strong></strong> </li>
             <li><strong></strong> </li>
@@ -110,6 +118,117 @@
       </article>
     </section>
   </main>
+
+  <section id="projects">
+    <h2>PROJECTS</h2>
+    <ul id="project-list">
+      <li class="project-card">
+        <div class="project-head">
+          <span class="project-index">01</span>
+          <h3>Deepfake Detection AI</h3>
+        </div>
+        <p class="project-line"><strong>Problem</strong> 음성 딥페이크(딥보이스)를 탐지하는 모델 개발</p>
+        <p class="project-line"><strong>My Role</strong> 데이터 정제부터 RawNet2 모델 구축, 한국어 파인튜닝, Grad-CAM 기반 판단 근거 시각화까지 전 과정 담당</p>
+        <p class="project-line project-result"><strong>Result</strong> EER 0.98% (300개 36.00% → 1,000개 15.60% → 5,000개 6.24% → 전체 0.98%)</p>
+        <ul class="project-tech">
+          <li>RawNet2</li>
+          <li>PyTorch</li>
+          <li>FastAPI</li>
+          <li>ONNX Runtime</li>
+          <li>Flutter</li>
+          <li>Docker</li>
+        </ul>
+
+        <button type="button" class="evidence-toggle" aria-expanded="false" aria-controls="project-detail-1">자세히 보기</button>
+        <div id="project-detail-1" class="evidence-detail" hidden>
+          <p><strong>모델 구축</strong> 데이터 정제·라벨링, RawNet2(70.7M) 기반 판별, Docker 환경 고정</p>
+          <table class="mini-table">
+            <thead><tr><th>데이터 수</th><th>Accuracy</th><th>EER</th></tr></thead>
+            <tbody>
+              <tr><td>300개</td><td>0.7067</td><td>36.00%</td></tr>
+              <tr><td>1,000개</td><td>0.9380</td><td>15.60%</td></tr>
+              <tr><td>5,000개</td><td>0.9708</td><td>6.24%</td></tr>
+              <tr><td>전체</td><td>0.9997</td><td>0.98%</td></tr>
+            </tbody>
+          </table>
+          <p><strong>파인튜닝</strong> 3-Stage 점진적 언프리징 + RawBoost 증강으로 과적합 방지, Stage 1 EER 2.14%</p>
+          <p><strong>시각화</strong> Grad-CAM+Ablation으로 판단 근거 시각화 · 한계: 최신 Neural TTS 일부 미탐지 확인</p>
+        </div>
+
+        <a class="project-link" href="https://github.com/whiteclover0542/Deep_Voice_Phishing_Detection" target="_blank" rel="noopener">GitHub →</a>
+        <p class="project-note">* 팀 공용 저장소에서 본인이 담당한 코드만 발췌한 개인 스냅샷 — 단독 실행은 되지 않음</p>
+      </li>
+
+      <li class="project-card">
+        <div class="project-head">
+          <span class="project-index">02</span>
+          <h3>Emotion Check-in AI</h3>
+        </div>
+        <p class="project-line"><strong>Problem</strong> 정서적 위기 상황(반려동물 상실 등)에서 안전하게 위로 메시지를 생성하고 위험 신호는 놓치지 않아야 하는 문제</p>
+        <p class="project-line"><strong>My Role</strong> 위기 감지 규칙 엔진, 추모 메시지 생성 파이프라인, RAG 검색, LLM-as-judge 평가까지 안전성 중심으로 설계</p>
+        <p class="project-line project-result"><strong>Result</strong> G-Eval 4.6–4.8 · 위기 감지 40/40(100%) · WER 19.1%→개선</p>
+        <ul class="project-tech">
+          <li>LLM</li>
+          <li>RAG</li>
+          <li>ChromaDB</li>
+          <li>G-Eval</li>
+          <li>Safety</li>
+        </ul>
+
+        <button type="button" class="evidence-toggle" aria-expanded="false" aria-controls="project-detail-2">자세히 보기</button>
+        <div id="project-detail-2" class="evidence-detail" hidden>
+          <p><strong>위기 감지</strong>(safety.py) L0~L3 4단계, 맥락 점수화 + LLM 결과 max() 융합(등급 하향 없음)</p>
+          <table class="mini-table">
+            <thead><tr><th>등급</th><th>의미</th><th>응답</th></tr></thead>
+            <tbody>
+              <tr><td>L0</td><td>위험 신호 없음</td><td>평소대로 생성</td></tr>
+              <tr><td>L1</td><td>수동적 신호</td><td>생성 + 복지자원 안내</td></tr>
+              <tr><td>L2</td><td>사망 욕구 표현</td><td>생성 중단, 1393 안내</td></tr>
+              <tr><td>L3</td><td>구체적 수단·계획</td><td>생성 전면 중단 + 1393</td></tr>
+            </tbody>
+          </table>
+          <p><strong>메시지 생성</strong>(memorial.py) 위기체크→RAG→LLM→가드 파이프라인, 3인칭 기본 · 1인칭은 엄격 게이트 뒤에서만 허용</p>
+          <p><strong>RAG</strong> ChromaDB 카테고리별 컬렉션 분리, Hit@1·3·MRR로 검색 품질 검증</p>
+          <p><strong>평가</strong> LLM-as-judge로 메시지·위기응답 채점, 음성/영상/시스템 지표까지 통합 설계</p>
+        </div>
+
+        <a class="project-link" href="https://github.com/whiteclover0542/petloss_crisis_llm" target="_blank" rel="noopener">GitHub →</a>
+        <p class="project-note">* 팀 공용 저장소에서 본인이 담당한 코드만 발췌한 개인 스냅샷 — 단독 실행은 되지 않음</p>
+      </li>
+
+      <li class="project-card">
+        <div class="project-head">
+          <span class="project-index">03</span>
+          <h3>SafeMaintAI</h3>
+        </div>
+        <p class="project-line"><strong>Problem</strong> 제조설비 정비작업 전 위험요인·안전조치 파악과 근거 문서 탐색에 시간이 걸리는 문제</p>
+        <p class="project-line"><strong>My Role</strong> RAG 하이브리드 검색부터 LLM 추론, 백엔드 API, 채팅 UI, 품질 평가까지 AI 파이프라인 전 구간 구현</p>
+        <p class="project-line project-result"><strong>Result</strong> 검색 Recall/MRR·답변 성공률·Faithfulness 등 자체 평가 지표로 품질을 검증하며 파이프라인 완성</p>
+        <ul class="project-tech">
+          <li>Python</li>
+          <li>pgvector</li>
+          <li>Qwen LLM</li>
+          <li>RAG</li>
+          <li>Docker</li>
+        </ul>
+
+        <button type="button" class="evidence-toggle" aria-expanded="false" aria-controls="project-detail-3">자세히 보기</button>
+        <div id="project-detail-3" class="evidence-detail" hidden>
+          <ul class="evidence-list">
+            <li><strong>RAG 검색</strong> pgvector+키워드 하이브리드, 조사 제거·동의어 확장·접근권한 필터링</li>
+            <li><strong>Qwen LLM</strong> 분류·생성·채점 4태스크, JSON 스키마 강제 + 안전 폴백</li>
+            <li><strong>임베딩·전처리</strong> Docling PDF 추출 → 청크 → PostgreSQL 적재</li>
+            <li><strong>백엔드 API</strong> 채팅 파이프라인, 세션 인증, TTS/STT 연동</li>
+            <li><strong>채팅 UI</strong> 근거 연결 채팅 화면, 인증 PDF 뷰어</li>
+            <li><strong>품질 평가</strong> Recall/MRR·성공률·Faithfulness 측정, 리포트화</li>
+          </ul>
+        </div>
+
+        <a class="project-link" href="https://github.com/whiteclover0542/SafeMaintAI" target="_blank" rel="noopener">GitHub →</a>
+        <p class="project-note">* 팀 공용 저장소에서 본인이 담당한 코드만 발췌한 개인 스냅샷 — 단독 실행은 되지 않음</p>
+      </li>
+    </ul>
+  </section>
 
   <footer id="contact">
     whiteclover0542@gmail.com

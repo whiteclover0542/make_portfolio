@@ -46,36 +46,48 @@ header#intro h1 {
   font-size: clamp(3.2rem, 10vw, 6rem);
   line-height: 1.1;
   letter-spacing: 0.03em;
-  margin: 0 0 64px;
+  margin: 0 0 20px;
+}
+
+.hero-kicker {
+  font-family: -apple-system, "Apple SD Gothic Neo", sans-serif;
+  font-weight: 700;
+  font-size: 0.68rem;
+  line-height: 1.3;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0 0 6px;
+}
+
+#hero-role {
+  font-family: -apple-system, "Apple SD Gothic Neo", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1rem, 2.4vw, 1.25rem);
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+  color: var(--white);
+  margin: 0 0 16px;
+}
+
+#hero-mission {
+  font-size: 1rem;
+  line-height: 1.3;
+  color: #d6d6d6;
+  margin: 0 0 32px;
 }
 
 #target-sentence {
-  position: relative;
   max-width: 520px;
-  margin: 0 auto 4px;
-  padding-top: 20px;
+  margin: 32px auto 0;
   font-size: 1.1rem;
   line-height: 1.6;
   color: #d6d6d6;
 }
 
-#target-sentence::before {
-  content: "“";
-  font-family: var(--font-display);
-  font-size: 6rem;
-  color: rgba(255, 255, 255, 0.08);
-  position: absolute;
-  top: -36px;
-  left: 50%;
-  transform: translateX(-50%);
-  line-height: 1;
-  z-index: 0;
-}
-
 #hero-highlights {
   position: relative;
   max-width: 720px;
-  margin: 36px auto 0;
+  margin: 10px auto 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0;
@@ -100,15 +112,17 @@ header#intro h1 {
   font-family: -apple-system, "Apple SD Gothic Neo", sans-serif;
   font-weight: 700;
   font-size: 0.68rem;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.04em;
   color: rgba(255, 255, 255, 0.55);
 }
 
 .hero-stat .v {
   max-width: 100%;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: #d6d6d6;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.4rem, 3.4vw, 1.9rem);
+  line-height: 1.2;
+  color: var(--white);
 }
 
 /* disclosure (스크롤 후 등장, hover/focus로 세부 내용 표시) */
@@ -238,11 +252,172 @@ ul.detail-list strong,
   vertical-align: middle;
 }
 
+/* projects */
+section#projects {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 90px 24px 20px;
+  text-align: center;
+}
+
+section#projects h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.4rem;
+  margin: 0 0 40px;
+}
+
+#project-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.project-card {
+  background: var(--gray-100);
+  border-radius: 16px;
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.project-index {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--gray-500);
+}
+
+.project-head h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.project-line {
+  margin: 6px 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--gray-700);
+}
+
+.project-result {
+  color: var(--black);
+}
+
+.project-line strong {
+  display: inline-block;
+  font-family: -apple-system, "Apple SD Gothic Neo", sans-serif;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  background: var(--charcoal);
+  color: var(--white);
+  border-radius: 4px;
+  padding: 2px 7px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.project-tech {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0;
+  margin: 14px 0 0;
+}
+
+.project-tech li {
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: var(--gray-700);
+  background: var(--white);
+  border: 1px solid var(--gray-300);
+  border-radius: 999px;
+  padding: 3px 10px;
+}
+
+.project-link {
+  align-self: flex-start;
+  margin-top: 18px;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  color: var(--black);
+  text-decoration: none;
+  border-bottom: 2px solid var(--black);
+  padding-bottom: 2px;
+}
+
+.project-note {
+  margin: 10px 0 0;
+  font-size: 0.74rem;
+  line-height: 1.5;
+  color: var(--gray-500);
+}
+
+.project-card .evidence-toggle {
+  margin-top: 16px;
+  font-size: 0.78rem;
+}
+
+.project-card .evidence-detail {
+  margin-top: 12px;
+  padding: 16px 18px;
+  background: var(--white);
+}
+
+.project-card .evidence-detail p {
+  margin: 0 0 10px;
+}
+
+.project-card .evidence-detail p:last-child {
+  margin-bottom: 0;
+}
+
+.mini-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 10px;
+  font-size: 0.76rem;
+}
+
+.mini-table th,
+.mini-table td {
+  border: 1px solid var(--gray-300);
+  padding: 4px 7px;
+  text-align: left;
+}
+
+.mini-table th {
+  background: var(--white);
+  font-weight: 700;
+}
+
 /* strengths */
 main {
   max-width: 760px;
   margin: 0 auto;
   padding: 90px 24px 40px;
+}
+
+section#strengths h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.4rem;
+  text-align: center;
+  margin: 0 0 56px;
 }
 
 section#strengths {
@@ -272,22 +447,22 @@ article.strength::before {
   user-select: none;
 }
 
-article.strength:nth-child(even) {
+article.strength:nth-of-type(even) {
   padding-left: 0;
   padding-right: 108px;
   text-align: right;
 }
 
-article.strength:nth-child(even)::before {
+article.strength:nth-of-type(even)::before {
   left: auto;
   right: -12px;
 }
 
-article.strength:nth-child(even) button.evidence-toggle {
+article.strength:nth-of-type(even) button.evidence-toggle {
   flex-direction: row-reverse;
 }
 
-article.strength h2 {
+article.strength h3 {
   position: relative;
   z-index: 1;
   font-family: var(--font-display);
@@ -419,6 +594,14 @@ footer#contact a:focus-visible {
     padding: 56px 20px 8px;
   }
 
+  section#projects {
+    padding: 56px 20px 8px;
+  }
+
+  #project-list {
+    grid-template-columns: 1fr;
+  }
+
   main {
     padding: 64px 20px 24px;
   }
@@ -428,14 +611,14 @@ footer#contact a:focus-visible {
   }
 
   article.strength,
-  article.strength:nth-child(even) {
+  article.strength:nth-of-type(even) {
     padding-left: 0;
     padding-right: 0;
     text-align: left;
   }
 
   article.strength::before,
-  article.strength:nth-child(even)::before {
+  article.strength:nth-of-type(even)::before {
     position: static;
     display: block;
     font-size: 3.4rem;
