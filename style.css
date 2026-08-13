@@ -20,6 +20,10 @@ body {
   color: var(--black);
   font-family: var(--font-body);
   line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  word-break: keep-all;
 }
 
 /* hero */
@@ -27,7 +31,11 @@ header#intro {
   background: var(--charcoal);
   color: var(--white);
   text-align: center;
-  padding: 110px 24px 90px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 72px 24px;
   position: relative;
   overflow: hidden;
 }
@@ -35,31 +43,72 @@ header#intro {
 header#intro h1 {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(2.6rem, 8vw, 4.6rem);
+  font-size: clamp(2.4rem, 7vw, 4rem);
+  line-height: 1.1;
   letter-spacing: 0.02em;
-  margin: 0 0 32px;
+  margin: 0 0 44px;
 }
 
 #target-sentence {
   position: relative;
   max-width: 520px;
-  margin: 0 auto 36px;
-  padding-top: 24px;
-  font-size: 1.15rem;
+  margin: 0 auto 4px;
+  padding-top: 20px;
+  font-size: 1.1rem;
+  line-height: 1.6;
   color: #d6d6d6;
 }
 
 #target-sentence::before {
   content: "“";
   font-family: var(--font-display);
-  font-size: 7rem;
+  font-size: 6rem;
   color: rgba(255, 255, 255, 0.08);
   position: absolute;
-  top: -50px;
+  top: -36px;
   left: 50%;
   transform: translateX(-50%);
   line-height: 1;
   z-index: 0;
+}
+
+#hero-highlights {
+  position: relative;
+  max-width: 720px;
+  margin: 36px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.hero-stat {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 0 16px;
+  border-right: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.hero-stat:last-child {
+  border-right: none;
+}
+
+.hero-stat .k {
+  display: inline-block;
+  font-family: -apple-system, "Apple SD Gothic Neo", sans-serif;
+  font-weight: 700;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.hero-stat .v {
+  max-width: 100%;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #d6d6d6;
 }
 
 /* disclosure (스크롤 후 등장, hover/focus로 세부 내용 표시) */
@@ -79,24 +128,25 @@ section#disclosure h2 {
 
 #disclosure-scope {
   list-style: none;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   padding: 0;
   margin: 0;
+  text-align: center;
 }
 
 #disclosure-scope li {
   background: var(--gray-100);
   border-radius: 16px;
-  padding: 22px 20px;
+  padding: 22px 24px;
   cursor: default;
 }
 
 #disclosure-scope li .label {
   display: block;
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: 1.15rem;
 }
 
 #disclosure-scope li .detail {
@@ -114,7 +164,7 @@ section#disclosure h2 {
 #disclosure-scope li:focus .detail,
 #disclosure-scope li:focus-visible .detail,
 #disclosure-scope li:focus-within .detail {
-  max-height: 220px;
+  max-height: 320px;
   opacity: 1;
   margin-top: 10px;
 }
@@ -134,13 +184,35 @@ section#disclosure h2 {
   margin: 8px 0 0;
 }
 
+#disclosure-scope li.card-featured {
+  background: var(--charcoal);
+  color: var(--white);
+}
+
+#disclosure-scope li.card-featured .label {
+  font-size: 1.3rem;
+}
+
+#disclosure-scope li.card-featured .detail {
+  color: var(--gray-300);
+}
+
+#disclosure-scope li.card-featured .detail a {
+  color: var(--white);
+}
+
+#disclosure-scope li.card-featured:focus-visible {
+  outline-color: var(--white);
+}
+
 #disclosure-scope ul.detail-list {
   list-style: none;
   padding: 0;
   margin: 0;
-  text-align: left;
+  text-align: center;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 6px;
 }
 
@@ -151,16 +223,17 @@ section#disclosure h2 {
   cursor: inherit;
 }
 
-ul.detail-list strong {
+ul.detail-list strong,
+.evidence-list strong {
   display: inline-block;
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 0.68rem;
-  letter-spacing: 0.06em;
-  background: var(--black);
+  font-family: -apple-system, "Apple SD Gothic Neo", sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  background: var(--charcoal);
   color: var(--white);
   border-radius: 4px;
-  padding: 2px 6px;
+  padding: 3px 7px;
   margin-right: 6px;
   vertical-align: middle;
 }
@@ -210,7 +283,7 @@ article.strength:nth-child(even)::before {
   right: -12px;
 }
 
-article.strength:nth-child(even) button#evidence-toggle {
+article.strength:nth-child(even) button.evidence-toggle {
   flex-direction: row-reverse;
 }
 
@@ -227,25 +300,31 @@ article.strength p {
   position: relative;
   z-index: 1;
   margin: 8px 0;
+  font-size: 0.95rem;
   color: var(--gray-700);
+}
+
+article.strength p.result {
+  color: var(--black);
+  font-size: 1.08em;
 }
 
 article.strength p strong {
   display: inline-block;
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  background: var(--black);
+  font-family: -apple-system, "Apple SD Gothic Neo", sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  background: var(--charcoal);
   color: var(--white);
   border-radius: 4px;
-  padding: 3px 8px;
+  padding: 3px 9px;
   margin-right: 8px;
   vertical-align: middle;
 }
 
 /* interaction */
-button#evidence-toggle {
+button.evidence-toggle {
   position: relative;
   z-index: 1;
   margin-top: 20px;
@@ -264,15 +343,15 @@ button#evidence-toggle {
   transition: gap 0.2s ease, opacity 0.2s ease;
 }
 
-button#evidence-toggle::after {
+button.evidence-toggle::after {
   content: "→";
 }
 
-button#evidence-toggle:hover {
+button.evidence-toggle:hover {
   gap: 12px;
 }
 
-#evidence-detail {
+.evidence-detail {
   position: relative;
   z-index: 1;
   margin-top: 16px;
@@ -280,11 +359,25 @@ button#evidence-toggle:hover {
   background: var(--gray-100);
   border-radius: 12px;
   color: var(--gray-700);
+  text-align: left;
+}
+
+.evidence-detail p {
+  margin: 0;
+}
+
+.evidence-list {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 /* contact */
 footer#contact {
-  background: var(--black);
+  background: var(--charcoal);
   color: var(--white);
   text-align: center;
   padding: 60px 24px;
@@ -312,12 +405,18 @@ footer#contact a:focus-visible {
     padding: 80px 20px 64px;
   }
 
-  section#disclosure {
-    padding: 56px 20px 8px;
+  #hero-highlights {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 
-  #disclosure-scope {
-    grid-template-columns: 1fr;
+  .hero-stat {
+    padding: 0;
+    border-right: none;
+  }
+
+  section#disclosure {
+    padding: 56px 20px 8px;
   }
 
   main {

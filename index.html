@@ -13,12 +13,27 @@
   <header id="intro">
     <h1>WHITECLOVER</h1>
     <p id="target-sentence">이 페이지는 함께 협업할 팀원분들께 제가 누구인지 보여드리기 위해 만들었습니다.</p>
+
+    <div id="hero-highlights">
+      <div class="hero-stat">
+        <span class="k">WHO AM I</span>
+        <span class="v">보안을 공부하는 풀스택 개발자</span>
+      </div>
+      <div class="hero-stat">
+        <span class="k">WHAT I DO</span>
+        <span class="v">보안 관점으로 AI·백엔드 서비스를 만듭니다</span>
+      </div>
+      <div class="hero-stat">
+        <span class="k">PROOF</span>
+        <span class="v">딥보이스 탐지 AI, EER 0.98%</span>
+      </div>
+    </div>
   </header>
 
   <section id="disclosure">
     <h2>공개할 것</h2>
     <ul id="disclosure-scope">
-      <li tabindex="0">
+      <li tabindex="0" class="card-featured">
         <span class="label">GitHub</span>
         <div class="detail">
           <a href="https://github.com/whiteclover0542" target="_blank" rel="noopener">https://github.com/whiteclover0542</a>
@@ -48,35 +63,58 @@
   <main>
     <section id="strengths">
       <article class="strength">
-        <h2>[강점 1-완벽주의]</h2>
-        <p class="situation"><strong>상황</strong> [언제·어디서 있었는가]</p>
-        <p class="action"><strong>행동</strong> [내가 실제로 무엇을 했는가]</p>
-        <p class="result"><strong>결과</strong> [어떤 결과가 생겼는가]</p>
+        <h2>강점 1 — 완벽주의</h2>
+        <p class="situation"><strong>상황</strong> 여러 팀 개발 프로젝트에서, 이미 팀이 정한 목표 성능(목표치)에 도달한 상태였습니다.</p>
+        <p class="action"><strong>행동</strong> 목표치를 채웠다고 끝내지 않고, 더 나은 결과를 위해 계속 점검하고 다듬으며 끝까지 파고들었습니다.</p>
+        <p class="result"><strong>결과</strong> 목표치를 넘어서는 수준까지 완성도를 끌어올렸습니다.</p>
+
+        <button type="button" class="evidence-toggle" aria-expanded="false" aria-controls="evidence-detail-1">자세히 보기</button>
+        <div id="evidence-detail-1" class="evidence-detail" hidden>
+          딥보이스(음성 딥페이크) 탐지 AI 개발 당시, EER(Equal Error Rate, 동일오류율 — 본인을 다른 사람으로 잘못 인식하는 비율과 못 알아보는 비율이 같아지는 지점의 오류율로, 낮을수록 판별 성능이 뛰어남)을 0.98%까지 낮추는 성과를 냈습니다.
+        </div>
       </article>
 
       <article class="strength">
-        <h2>[강점 2-의심과 검증]</h2>
-        <p class="situation"><strong>상황</strong> [언제·어디서 있었는가]</p>
-        <p class="action"><strong>행동</strong> [내가 실제로 무엇을 했는가]</p>
-        <p class="result"><strong>결과</strong> [어떤 결과가 생겼는가]</p>
+        <h2>강점 2 — 의심과 검증</h2>
+        <p class="situation"><strong>상황</strong> 여러 팀 개발 프로젝트에서, 결과물을 완성한 상태였습니다.</p>
+        <p class="action"><strong>행동</strong> 완성됐다고 끝내지 않고, 검증표·결과지표·성능표를 통합해 만들고 골든셋(golden set)과 G-Eval 같은 방법으로 직접 테스트·검증하며 부족한 점을 찾아 보완했습니다.</p>
+        <p class="result"><strong>결과</strong> 놓쳤던 오점들을 미리 발견해 고칠 수 있었습니다.</p>
+
+        <button type="button" class="evidence-toggle" aria-expanded="false" aria-controls="evidence-detail-2">자세히 보기</button>
+        <div id="evidence-detail-2" class="evidence-detail" hidden>
+          <p>실제로 감정 체크인 AI를 검증표·성능표로 테스트하던 중, 1인칭 음성 인식 오류율(WER)이 19.1%로 목표치(15% 이하)를 초과한 것을 발견해 개선 작업으로 이어갔습니다. G-Eval 일관성·유용성·자연스러움·윤리 준수는 모두 목표(4.0 이상)를 넘겨 4.6~4.8대를 기록했습니다.</p>
+          <ul class="evidence-list">
+            <li><strong>G-Eval 평균</strong> 4.6~4.8점 (목표 4.0점 이상) 통과</li>
+            <li><strong>위기 감지 정확도</strong> 40/40건, 100% (목표 90% 이상) 통과</li>
+            <li><strong>WER · 1인칭</strong> 19.1% (목표 15% 이하) 초과 → 발견 후 개선</li>
+            <li><strong>테스트셋</strong> 40문항 중 위험 신호 9건(22.5%)을 위기 감지 검증용으로 구성</li>
+          </ul>
+        </div>
       </article>
 
       <article class="strength">
-        <h2>[강점 3-문서 정리]</h2>
-        <p class="situation"><strong>상황</strong> [언제·어디서 있었는가]</p>
-        <p class="action"><strong>행동</strong> [내가 실제로 무엇을 했는가]</p>
-        <p class="result"><strong>결과</strong> [어떤 결과가 생겼는가]</p>
+        <h2>강점 3 — 문서 정리</h2>
+        <p class="situation"><strong>상황</strong> 여러 팀 개발 프로젝트에서, 크고 작은 변경 사항이 계속 생기는 상황이었습니다.</p>
+        <p class="action"><strong>행동</strong> Progress·해야 할 일·체크리스트·작업 현황을 항상 정리하며 문서화했습니다.</p>
+        <p class="result"><strong>결과</strong> 헷갈리거나 빼먹는 것 없이 순서대로 일을 진행할 수 있었습니다.</p>
 
-        <button type="button" id="evidence-toggle" aria-expanded="false">자세히 보기</button>
-        <div id="evidence-detail" hidden>
-          [근거: 공개 가능한 만든 것·기록·사진·결과 문장 중 1개]
+        <button type="button" class="evidence-toggle" aria-expanded="false" aria-controls="evidence-detail-3">자세히 보기</button>
+        <div id="evidence-detail-3" class="evidence-detail" hidden>
+          <p>실제 팀 프로젝트에서 시작 전·진행 중·리뷰 중(PR)·완료·막힘 상태를 색으로 구분한 진행 상태표를 만들어, 팀원들도 한눈에 진행 상황을 파악할 수 있게 관리했습니다.</p>
+          <ul class="evidence-list">
+            <li><strong></strong> </li>
+            <li><strong></strong> </li>
+            <li><strong></strong> </li>
+          </ul>
         </div>
       </article>
     </section>
   </main>
 
   <footer id="contact">
-    [공개하기로 정한 연락 방법만]
+    whiteclover0542@gmail.com
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
