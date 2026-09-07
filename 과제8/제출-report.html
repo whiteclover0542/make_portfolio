@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>과제 8 제출 — 패스키 인증</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gowun+Dodum&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black:#111111; --white:#ffffff; --gray-100:#ececec; --gray-200:#f5f5f5;
+    --gray-300:#cfcfcf; --gray-500:#8f8f8f; --gray-700:#444444; --charcoal:#2c2c2c;
+    --accent:#1a7f4e; --font-body:"Gowun Dodum",-apple-system,"Apple SD Gothic Neo",sans-serif;
+    --font-display:"Black Han Sans",-apple-system,"Apple SD Gothic Neo",sans-serif;
+    --font-ui:-apple-system,"Apple SD Gothic Neo",sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin:0; background:var(--white); color:var(--black); font-family:var(--font-body);
+    line-height:1.6; -webkit-font-smoothing:antialiased; word-break:keep-all;
+    font-size:13px;
+  }
+  .page { max-width:880px; margin:0 auto; padding:40px 48px 60px; }
+
+  header.hero {
+    background:var(--charcoal); color:var(--white); padding:40px 48px; text-align:center;
+  }
+  header.hero .kicker { font-family:var(--font-ui); font-weight:700; font-size:11px; letter-spacing:.12em; color:rgba(255,255,255,.55); margin:0 0 10px; }
+  header.hero h1 { font-family:var(--font-display); font-weight:400; font-size:34px; margin:0 0 14px; letter-spacing:.01em; }
+  header.hero p.sub { font-size:14px; color:#d6d6d6; margin:0 0 22px; }
+  .url-row { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+  .url-chip { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.25); border-radius:999px; padding:7px 16px; font-size:12px; color:var(--white); }
+  .url-chip b { font-family:var(--font-ui); font-weight:700; color:#9be3b8; margin-right:6px; }
+
+  h2.section-title {
+    font-family:var(--font-display); font-weight:400; font-size:19px; margin:38px 0 16px;
+    padding-bottom:8px; border-bottom:3px solid var(--black);
+  }
+  h2.section-title:first-of-type { margin-top:0; }
+
+  .checklist { list-style:none; padding:0; margin:0; display:grid; grid-template-columns:1fr 1fr; gap:8px 20px; }
+  .checklist li { display:flex; align-items:flex-start; gap:8px; font-size:12.5px; }
+  .check { flex:none; width:18px; height:18px; border-radius:5px; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; }
+
+  table.cards { width:100%; border-collapse:collapse; margin:0; }
+  table.cards th { text-align:left; font-family:var(--font-ui); font-size:10.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--gray-700); border-bottom:2px solid var(--black); padding:6px 10px; }
+  table.cards td { padding:9px 10px; font-size:12.5px; border-bottom:1px solid var(--gray-300); vertical-align:top; }
+  table.cards tr:last-child td { border-bottom:none; }
+  .badge-num { font-family:var(--font-display); font-weight:400; color:var(--gray-700); font-size:13px; }
+  .badge-pass { font-family:var(--font-ui); font-weight:700; font-size:11px; background:var(--accent); color:#fff; border-radius:5px; padding:3px 8px; white-space:nowrap; }
+
+  .steps { list-style:none; counter-reset:step; padding:0; margin:0; display:flex; flex-direction:column; gap:10px; }
+  .steps li { counter-increment:step; position:relative; padding-left:30px; font-size:12.5px; }
+  .steps li::before { content:counter(step); position:absolute; left:0; top:0; width:20px; height:20px; border-radius:50%; background:var(--black); color:#fff; font-family:var(--font-ui); font-weight:700; font-size:11px; display:flex; align-items:center; justify-content:center; }
+  .steps li b { display:block; font-family:var(--font-ui); font-weight:700; font-size:10.5px; letter-spacing:.03em; color:var(--gray-700); text-transform:uppercase; margin-bottom:2px; }
+
+  .ai-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; }
+  .ai-card { background:var(--gray-100); border-radius:10px; padding:14px 16px; }
+  .ai-card .label { font-family:var(--font-ui); font-weight:700; font-size:10.5px; letter-spacing:.03em; color:var(--gray-700); text-transform:uppercase; margin-bottom:6px; display:block; }
+  .ai-card p { margin:0; font-size:12px; line-height:1.55; }
+
+  .explain-item { margin:0 0 16px; }
+  .explain-item .num { display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; background:var(--black); color:#fff; font-family:var(--font-ui); font-weight:700; font-size:11px; margin-right:8px; }
+  .explain-item .title { font-family:var(--font-ui); font-weight:700; font-size:13px; }
+  .explain-item p, .explain-item ul { margin:8px 0 0 30px; font-size:12.5px; line-height:1.6; }
+  .explain-item ul { padding-left:16px; }
+
+  table.flow { width:calc(100% - 30px); margin:8px 0 0 30px; border-collapse:collapse; }
+  table.flow th { text-align:left; font-family:var(--font-ui); font-size:10px; letter-spacing:.03em; text-transform:uppercase; color:var(--gray-700); border-bottom:2px solid var(--black); padding:5px 8px; }
+  table.flow td { padding:6px 8px; font-size:11.5px; border-bottom:1px solid var(--gray-300); font-family:'Consolas',monospace; }
+  table.flow tr:last-child td { border-bottom:none; }
+
+  .callout { background:#fff4e5; border-left:4px solid #c97a1a; border-radius:6px; padding:10px 14px; margin:8px 0 0 30px; font-size:12px; }
+
+  .shots { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .shot { border:1px solid var(--gray-300); border-radius:10px; overflow:hidden; }
+  .shot img { width:100%; display:block; }
+  .shot .cap { padding:7px 10px; font-family:var(--font-ui); font-weight:700; font-size:11px; color:var(--gray-700); background:var(--gray-100); }
+
+  footer.pagefoot { margin-top:40px; padding-top:14px; border-top:1px solid var(--gray-300); font-size:10.5px; color:var(--gray-500); text-align:center; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <p class="kicker">WHITECLOVER · ASSIGNMENT 8</p>
+  <h1>내 소개 페이지에 패스키 달기</h1>
+  <p class="sub">비밀번호 없이, WebAuthn 패스키로 비공개 영역 잠그기</p>
+  <div class="url-row">
+    <span class="url-chip"><b>결과물</b>makeportfolio-red.vercel.app</span>
+    <span class="url-chip"><b>소스</b>github.com/whiteclover0542/portfolio</span>
+  </div>
+</header>
+
+<div class="page">
+
+  <h2 class="section-title">완주 체크리스트</h2>
+  <ul class="checklist">
+    <li><span class="check">✓</span>공개 영역과 비공개 영역을 화면에서 갈라 두었다</li>
+    <li><span class="check">✓</span>패스키를 등록했고, 서버에 저장된 것이 공개키라는 것을 보였다</li>
+    <li><span class="check">✓</span>매번 새 질문이 오고, 이미 쓴 질문은 다시 통하지 않는 것을 확인했다</li>
+    <li><span class="check">✓</span>패스키를 두 개 등록해 하나를 지운 뒤에도 들어갔다</li>
+    <li><span class="check">✓</span>남의 패스키로는 열리지 않는 것을 요청과 응답으로 남겼다</li>
+    <li><span class="check">✓</span>제출물 어디에도 실제 개인정보와 비밀값이 없다</li>
+  </ul>
+
+  <h2 class="section-title">카드별 진행 — 체크리스트 47 / 47 통과</h2>
+  <table class="cards">
+    <thead><tr><th style="width:30px"></th><th>카드</th><th>한 일</th><th style="width:60px">결과</th></tr></thead>
+    <tbody>
+      <tr><td class="badge-num">01</td><td>공개/비공개 분리</td><td>PRIVATE 섹션 신설, 비로그인 시 화면·소스·API 전부 차단(401)</td><td><span class="badge-pass">6/6</span></td></tr>
+      <tr><td class="badge-num">02</td><td>패스키 등록</td><td>challenge 매번 다름, 서버엔 공개키만 저장, 실기기로 저장 위치(삼성패스) 확인</td><td><span class="badge-pass">8/8</span></td></tr>
+      <tr><td class="badge-num">03</td><td>패스키 로그인</td><td>challenge 1회용, 세션 쿠키 발급, 로그아웃 후 재사용 차단</td><td><span class="badge-pass">9/9</span></td></tr>
+      <tr><td class="badge-num">04</td><td>기기 분실 대비</td><td>패스키 2개 등록 → 하나 삭제 → 남은 것으로 로그인, 지운 건 차단</td><td><span class="badge-pass">5/5</span></td></tr>
+      <tr><td class="badge-num">05</td><td>교차 검증</td><td>계정 2개 양방향 차단, 쿼리·헤더로 계정 스푸핑해도 내 자료만 반환</td><td><span class="badge-pass">19/19</span></td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="section-title">짧은 확인 방법</h2>
+  <ul class="steps">
+    <li><b>어디로</b>https://makeportfolio-red.vercel.app</li>
+    <li><b>3단계</b>주소 접속 → PRIVATE 구역에 아이디 입력 후 "패스키 등록" → 기기 인증 완료 시 비공개 메모·패스키 목록이 바로 열림</li>
+    <li><b>통과 기준</b>로그인 전엔 비공개 메모가 전혀 안 보임 + 비밀번호 입력 칸이 없음</li>
+    <li><b>안 될 때</b>패스키 미지원 브라우저면 안내 문구가 뜨고, 취소하면 잠긴 상태 그대로 유지(서버에 아무것도 안 남음)</li>
+  </ul>
+
+  <h2 class="section-title">AI와 내 판단 3줄</h2>
+  <div class="ai-grid">
+    <div class="ai-card"><span class="label">AI에게 맡긴 일</span><p>WebAuthn(SimpleWebAuthn) API 구현, Vercel+Redis 배포, Playwright로 등록·로그인·챌린지 재사용·기기 분실·교차 계정 시나리오 자동 검증</p></div>
+    <div class="ai-card"><span class="label">내가 직접 판단한 일</span><p>인증 서버 구성(Vercel+Redis), 더미 데이터·계정 모델, "아직 못 막은 것"으로 무엇을 인정할지, Vercel/GitHub 로그인, 실제 기기로 패스키 등록해 저장 위치(삼성패스) 확인</p></div>
+    <div class="ai-card"><span class="label">AI 말을 따르지 않은 일</span><p>없음 — 제안을 그대로 채택하되 매번 자동화 테스트로 직접 재검증 후 반영</p></div>
+  </div>
+
+  <h2 class="section-title">인증 구현 설명서</h2>
+
+  <div class="explain-item">
+    <span class="num">1</span><span class="title">무엇으로 붙였나</span>
+    <p><code>@simplewebauthn/server</code>(백엔드) + <code>@simplewebauthn/browser</code>(프런트) 라이브러리. challenge/세션 저장소, 데이터 모델, API 엔드포인트는 직접 구현. 실제 갤럭시 기기로 등록해보니 <b>삼성패스</b>에 저장됨.</p>
+  </div>
+
+  <div class="explain-item">
+    <span class="num">2</span><span class="title">왜 그걸 골랐나</span>
+    <p>WebAuthn을 직접 구현하면 서명 검증 등에서 실수하기 쉬워 검증된 오픈소스에 맡기고, 저장·세션·API는 직접 설계. GitHub Pages(정적)에서 Vercel(서버리스)+Upstash Redis로 옮겨 challenge 발급·검증을 서버에서 처리.</p>
+  </div>
+
+  <div class="explain-item">
+    <span class="num">3</span><span class="title">어디를 고쳤나</span>
+    <table class="flow">
+      <thead><tr><th style="width:110px">흐름</th><th>위치</th></tr></thead>
+      <tbody>
+        <tr><td>등록</td><td>api/register-options.js → api/register-verify.js</td></tr>
+        <tr><td>로그인</td><td>api/login-options.js → api/login-verify.js</td></tr>
+        <tr><td>로그아웃</td><td>api/logout.js</td></tr>
+        <tr><td>비공개 조회</td><td>api/private.js, api/passkeys.js (세션 쿠키의 username만 신뢰)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="explain-item">
+    <span class="num">4</span><span class="title">안 열리는 것 확인</span>
+    <ul>
+      <li>로그인 없이 /api/private → <b>401</b></li>
+      <li>남의 패스키로 로그인 시도(양방향) → <b>401</b> "이 계정에 등록된 패스키가 아닙니다"</li>
+      <li>성공한 로그인 요청 재전송(challenge 재사용) → <b>401</b> "이미 사용됨"</li>
+      <li>삭제된 패스키 id로 로그인 → <b>401</b>, 남은 패스키로는 성공</li>
+    </ul>
+  </div>
+
+  <div class="explain-item">
+    <span class="num">5</span><span class="title">AI와 나</span>
+    <p>위 "AI와 내 판단 3줄"과 동일</p>
+  </div>
+
+  <div class="explain-item">
+    <span class="num">6</span><span class="title">아직 못 막은 것</span>
+    <div class="callout"><code>login-options</code>가 계정 존재 여부에 따라 404/200을 다르게 반환해 아이디 열거(username enumeration)가 가능하고, rate limit도 없음.</div>
+  </div>
+
+  <h2 class="section-title">스크린샷 — PRIVATE 구역만 잘라서, 실제 배포 주소</h2>
+  <div class="shots">
+    <div class="shot"><img src="evidence-prod/cropped/01-locked.png"><div class="cap">1. 로그인 전</div></div>
+    <div class="shot"><img src="evidence-prod/cropped/02-registered-logged-in.png"><div class="cap">2. 등록·로그인 직후</div></div>
+    <div class="shot"><img src="evidence-prod/cropped/03-two-passkeys.png"><div class="cap">3. 패스키 2개 등록</div></div>
+    <div class="shot"><img src="evidence-prod/cropped/04-after-delete-one.png"><div class="cap">4. 하나 삭제 후</div></div>
+  </div>
+
+  <footer class="pagefoot">과제 8 제출 문서 · https://makeportfolio-red.vercel.app · https://github.com/whiteclover0542/portfolio</footer>
+</div>
+</body>
+</html>
