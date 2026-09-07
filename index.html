@@ -124,7 +124,41 @@
 
   <section id="projects">
     <h2>PROJECTS</h2>
-    <p class="project-group-label">Team Project · AI</p>
+    <p class="project-group-label">Solo Project · Security</p>
+    <ul class="project-grid project-grid--solo">
+      <li class="project-card project-card--solo">
+        <div class="project-head">
+          <span class="project-index">01</span>
+          <h3>Today CVE Info</h3>
+        </div>
+        <div class="project-stat"><span class="v">1인</span><span class="k">기획·개발·배포·운영 전담</span></div>
+        <p class="project-line"><strong>Problem</strong> 매일 쏟아지는 신규 CVE 중 무엇이 실제로 위험한지 빠르게 파악하기 어려운 문제</p>
+        <p class="project-line"><strong>My Role</strong> 기획부터 NVD 데이터 수집 배치, AI 해설 생성, 프론트엔드 대시보드, 장애 재현 시나리오까지 1인 기획·개발·운영</p>
+        <p class="project-line project-result"><strong>Result</strong> 매일 자동 수집·해설·배포되는 라이브 서비스로 운영 중 · 근거 없는 해설은 생성하지 않는 안전장치 설계</p>
+        <ul class="project-tech">
+          <li>Node.js</li>
+          <li>GitHub Actions</li>
+          <li>Cloudflare Workers</li>
+          <li>NVD API</li>
+          <li>Gemini API</li>
+        </ul>
+
+        <button type="button" class="evidence-toggle" aria-expanded="false" aria-controls="project-detail-solo-1">자세히 보기</button>
+        <div id="project-detail-solo-1" class="evidence-detail" hidden>
+          <p><strong>수집·배포</strong> Cloudflare Cron이 정해진 시각에 GitHub Actions를 트리거하면 NVD API 2.0을 조회·집계해 history.json에 커밋하고, Vercel이 자동으로 재배포합니다. 별도 서버 없이 정적 사이트와 하루 1회 배치만으로 운영됩니다.</p>
+          <p><strong>AI 해설</strong> 심각도가 높은 CVE만 Gemini로 번역·해석하고 발생 원인과 방지법까지 생성하며, 근거(CWE)가 없으면 해설을 생성하지 않습니다.</p>
+          <p><strong>안전장치</strong> 조회에 실패하면 마지막 정상값을 유지하면서 "오래된 데이터" 배너로 알리고, timeout·인증 실패 등 장애 5종을 직접 재현해 볼 수 있는 디버그 모드를 제공합니다.</p>
+        </div>
+
+        <div class="project-links">
+          <a class="project-link" href="https://github.com/whiteclover0542/Today_CVE_information" target="_blank" rel="noopener">GitHub →</a>
+          <a class="project-link" href="https://today-cve-information.vercel.app/" target="_blank" rel="noopener">Live →</a>
+        </div>
+        <p class="project-note">* 위 팀 프로젝트 3개와 달리, 기획부터 개발·배포·운영까지 혼자 진행한 개인 프로젝트</p>
+      </li>
+    </ul>
+
+    <p class="project-group-label project-group-label--spaced">Team Project · AI</p>
     <ul class="project-grid">
       <li class="project-card">
         <div class="project-head">
@@ -231,40 +265,6 @@
 
         <a class="project-link" href="https://github.com/whiteclover0542/SafeMaintAI" target="_blank" rel="noopener">GitHub →</a>
         <p class="project-note">* 팀 공용 저장소에서 본인이 담당한 코드만 발췌한 개인 스냅샷 — 단독 실행은 되지 않음</p>
-      </li>
-    </ul>
-
-    <p class="project-group-label project-group-label--solo">Solo Project · Security</p>
-    <ul class="project-grid project-grid--solo">
-      <li class="project-card project-card--solo">
-        <div class="project-head">
-          <span class="project-index">01</span>
-          <h3>Today CVE Info</h3>
-        </div>
-        <div class="project-stat"><span class="v">1인</span><span class="k">기획·개발·배포·운영 전담</span></div>
-        <p class="project-line"><strong>Problem</strong> 매일 쏟아지는 신규 CVE 중 무엇이 실제로 위험한지 빠르게 파악하기 어려운 문제</p>
-        <p class="project-line"><strong>My Role</strong> 기획부터 NVD 데이터 수집 배치, AI 해설 생성, 프론트엔드 대시보드, 장애 재현 시나리오까지 1인 기획·개발·운영</p>
-        <p class="project-line project-result"><strong>Result</strong> 매일 자동 수집·해설·배포되는 라이브 서비스로 운영 중 · 근거 없는 해설은 생성하지 않는 안전장치 설계</p>
-        <ul class="project-tech">
-          <li>Node.js</li>
-          <li>GitHub Actions</li>
-          <li>Cloudflare Workers</li>
-          <li>NVD API</li>
-          <li>Gemini API</li>
-        </ul>
-
-        <button type="button" class="evidence-toggle" aria-expanded="false" aria-controls="project-detail-solo-1">자세히 보기</button>
-        <div id="project-detail-solo-1" class="evidence-detail" hidden>
-          <p><strong>수집·배포</strong> Cloudflare Cron이 정해진 시각에 GitHub Actions를 트리거하면 NVD API 2.0을 조회·집계해 history.json에 커밋하고, Vercel이 자동으로 재배포합니다. 별도 서버 없이 정적 사이트와 하루 1회 배치만으로 운영됩니다.</p>
-          <p><strong>AI 해설</strong> 심각도가 높은 CVE만 Gemini로 번역·해석하고 발생 원인과 방지법까지 생성하며, 근거(CWE)가 없으면 해설을 생성하지 않습니다.</p>
-          <p><strong>안전장치</strong> 조회에 실패하면 마지막 정상값을 유지하면서 "오래된 데이터" 배너로 알리고, timeout·인증 실패 등 장애 5종을 직접 재현해 볼 수 있는 디버그 모드를 제공합니다.</p>
-        </div>
-
-        <div class="project-links">
-          <a class="project-link" href="https://github.com/whiteclover0542/Today_CVE_information" target="_blank" rel="noopener">GitHub →</a>
-          <a class="project-link" href="https://today-cve-information.vercel.app/" target="_blank" rel="noopener">Live →</a>
-        </div>
-        <p class="project-note">* 위 팀 프로젝트 3개와 달리, 기획부터 개발·배포·운영까지 혼자 진행한 개인 프로젝트</p>
       </li>
     </ul>
   </section>
