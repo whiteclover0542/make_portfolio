@@ -9,3 +9,13 @@ document.querySelectorAll('.evidence-toggle').forEach((button) => {
     button.textContent = expanded ? '자세히 보기' : '접기';
   });
 });
+
+const contactToggle = document.getElementById('contact-toggle');
+const contactEmail = document.getElementById('contact-email');
+if (contactToggle && contactEmail) {
+  contactToggle.addEventListener('click', () => {
+    const expanded = contactToggle.getAttribute('aria-expanded') === 'true';
+    contactToggle.setAttribute('aria-expanded', String(!expanded));
+    contactEmail.hidden = expanded;
+  });
+}

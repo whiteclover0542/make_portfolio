@@ -840,6 +840,38 @@ footer#contact {
   letter-spacing: 0.04em;
 }
 
+footer#contact .contact-toggle {
+  background: none;
+  border: none;
+  border-bottom: 2px solid var(--white);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  padding: 4px 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap 0.2s ease;
+}
+
+footer#contact .contact-toggle::after {
+  content: "→";
+}
+
+footer#contact .contact-toggle:hover {
+  gap: 12px;
+}
+
+footer#contact .contact-email {
+  margin: 16px 0 0;
+}
+
+footer#contact .contact-email a {
+  color: var(--white);
+}
+
 /* accessibility: keyboard focus visible */
 a:focus-visible,
 button:focus-visible {
