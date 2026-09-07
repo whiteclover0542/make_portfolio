@@ -48,9 +48,15 @@ script.js    "자세히 보기" 토글 인터랙션
 - [AI3줄.md](과제1/AI3줄.md) — 이 프로젝트에서 AI 활용 내역 요약
 - [progress.md](과제1/progress.md) — 제작 진행 관리 기록
 
-### 과제8
+### 과제8 — 패스키(WebAuthn) 인증
 
-- [과제8/](과제8/) — 준비 중
+- **결과물**: https://makeportfolio-red.vercel.app
+- [ASSIGNMENT.md](과제8/ASSIGNMENT.md) — 과제 지침·요구사항 원문
+- [인증구현설명서.md](과제8/인증구현설명서.md) — 무엇으로·왜·어디를·확인 기록·아직 못 막은 것
+- [검증안내서.md](과제8/검증안내서.md) — 페이지 확인 방법과 통과 기준
+- [AI3줄.md](과제8/AI3줄.md) — AI 활용 내역 요약
+- [progress.md](과제8/progress.md) — 카드별 체크리스트·작업 순서·진행 기록
+- [evidence/](과제8/evidence/), [evidence-prod/](과제8/evidence-prod/) — 로컬/배포 주소 자동 검증 스크린샷·요청응답 로그
 
 ## 배포
 
