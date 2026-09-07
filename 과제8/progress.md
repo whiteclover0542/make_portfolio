@@ -11,21 +11,27 @@
 | 2 | 패스키를 등록한다 | ✅ | 로컬 검증 완료 (evidence/02, log.md) |
 | 3 | 패스키로 들어간다 (로그인) | ✅ | 로컬 검증 완료 — challenge 재사용 거부 확인 |
 | 4 | 기기를 잃어버렸을 때 (패스키 2개, 삭제 후 재로그인) | ✅ | 로컬 검증 완료 (evidence/03, 04) |
-| 5 | 안 열리는지 확인 + 설명서 작성 | 🔄 | 교차 계정 차단 로컬 검증 완료. 남은 일: **실제 배포(Vercel)**, 배포 주소에서 재확인, 설명서 6항목·검증안내서·AI3줄 정리 |
+| 5 | 안 열리는지 확인 + 설명서 작성 | 🔄 | 배포 완료 + 배포 주소에서 전체 재검증 완료. 남은 일: **실제 기기로 패스키 저장 위치 확인(C26)**, 설명서 6항목·검증안내서·AI3줄 최종 정리해서 제출 폼에 옮기기 |
+
+### 배포 정보 (확정)
+- **결과물 URL**: https://makeportfolio-red.vercel.app
+- **소스 URL**: https://github.com/whiteclover0542/make_portfolio (공개 저장소)
+- Vercel 프로젝트: `whiteclover/make_portfolio` / 저장소: Upstash for Redis(Vercel Marketplace, 무료) 연결됨 — env: `KV_REST_API_URL`, `KV_REST_API_TOKEN` 등이 Production/Preview/Development 전부에 설정됨
 
 ### 구현 스택 (확정)
 - 프론트: 기존 정적 페이지(index.html/style.css) + `passkey.js`, `@simplewebauthn/browser`(CDN, jsdelivr 고정 버전)
 - 백엔드: Vercel 서버리스 함수(`api/*.js`, Node), `@simplewebauthn/server`
-- 저장소: `@upstash/redis` (Vercel Marketplace의 Redis 통합 또는 Upstash 무료 계정) — 로컬 개발 중에는 `.data/db.json` 파일로 자동 대체(`api/_lib/store.js`)
+- 저장소: `@upstash/redis` (Vercel Marketplace Redis 통합, 실제 배포에 연결됨) — 로컬 개발 중에는 `.data/db.json` 파일로 자동 대체(`api/_lib/store.js`)
 - 세션: httpOnly 쿠키 + 서버 저장 토큰(1시간 만료)
-- 로컬 검증: `scripts/dev-server.mjs`(Vercel 없이 api/*.js를 그대로 구동) + `scripts/test-passkey-flow.mjs`(Playwright + CDP 가상 WebAuthn 인증기로 실제 등록/로그인 의식 자동 실행, 증거는 `과제8/evidence/`에 스크린샷 4장 + `log.md`로 저장)
+- 검증: `scripts/dev-server.mjs`(Vercel 없이 api/*.js를 그대로 구동, 로컬용) + `scripts/test-passkey-flow.mjs`(Playwright + CDP 가상 WebAuthn 인증기로 실제 등록/로그인 의식 자동 실행). `TEST_BASE_URL`·`EVIDENCE_DIR` 환경변수로 로컬(`evidence/`)과 실제 배포 주소(`evidence-prod/`) 양쪽에 동일 시나리오를 돌려 스크린샷 4장 + `log.md`로 저장.
 
-### 로컬 자동 검증 결과 요약 (2026-09-07, `과제8/evidence/log.md` 참고)
+### 자동 검증 결과 요약 (2026-09-07, 로컬 `evidence/log.md` + 배포 `evidence-prod/log.md` 둘 다 동일하게 통과)
 - 로그인 전: `#private-content`는 화면에 없고, HTML 소스에도 비공개 텍스트 없음. `/api/private` 무쿠키 요청 → **401**.
-- 등록: `/api/register-options`를 같은 아이디로 두 번 호출 → challenge 값 서로 다름 확인. 등록 성공 시 서버 응답에 공개키 미리보기만 포함(개인키 없음).
-- 로그인: 로그인 성공 시 세션 쿠키 발급 → `/api/session` `loggedIn:true`. 방금 성공한 로그인 요청 바디를 그대로 재전송 → **401 "이미 사용됨"** (challenge 1회용 확인).
+- 등록: `/api/register-options`를 같은 아이디로 두 번 호출 → challenge 값 서로 다름 확인. 등록 성공 시 서버 응답에 공개키 미리보기만 포함(개인키 없음). 위조된 attestation으로 검증 시도 → 400, 이후 해당 계정에 저장된 credential 0개 확인.
+- 로그인: 로그인 성공 시 세션 쿠키 발급 → `/api/session` `loggedIn:true`. 방금 성공한 로그인 요청 바디를 그대로 재전송 → **401 "이미 사용됨"** (challenge 1회용 확인). 로그아웃한 옛 세션 쿠키 재사용 시도 → **401**.
 - 기기 분실: alice 계정에 패스키 2개(`alice-노트북`, `alice-폰`) 등록 → 목록에 이름+등록일 표시 → `alice-노트북` 삭제 → 남은 `alice-폰`으로 재로그인 **성공** → 삭제된 credential id로 로그인 시도 시 **401 "이 계정에 등록된 패스키가 아닙니다."**
 - 교차 계정: alice·bob 두 계정 각각 패스키 등록(메모 내용도 서로 다름 확인) → alice의 credential id로 bob 계정에 로그인 시도 **401**, 반대 방향도 **401** (양방향 확인) → alice 세션으로 로그인한 채 쿼리스트링·헤더에 `bob-demo`를 지정해도 응답은 항상 alice 자신의 메모만 반환.
+- 배포 주소(makeportfolio-red.vercel.app)에서도 위 전체 시나리오가 동일하게 통과 (rpID가 실제 도메인으로 정확히 잡힘, Redis에 실제로 저장/조회됨).
 
 ---
 
@@ -90,10 +96,10 @@
 - [x] T08-C46 패스키가 하나도 안 남았을 때 어떻게 되는지 화면·제출문에 적혀 있다 — 삭제 시 UI 확인창 문구 + 설명서 ⑥에 한계로 기술
 
 ### 카드 5 — 교차 검증 + 설명서
-- [ ] T08-C01 결과물 URL 필드에 HTTPS URL 1개 — **Vercel 배포 후 채움**
-- [ ] T08-C02 소스 URL 필드에 HTTPS URL 1개 — **GitHub 공개 저장소 URL로 채움**
-- [ ] T08-C03 모든 URL이 새 시크릿 창에서 계정 생성/로그인/인증/초대/비밀번호/OAuth/CAPTCHA 없이 열린다 — 배포 후 확인
-- [ ] T08-C10 결과물 첫 화면이 공개 소개 페이지, 등록 없이 열린다 — 배포 후 확인 (로컬은 확인됨)
+- [x] T08-C01 결과물 URL 필드에 HTTPS URL 1개 — https://makeportfolio-red.vercel.app
+- [x] T08-C02 소스 URL 필드에 HTTPS URL 1개 — https://github.com/whiteclover0542/make_portfolio (공개 저장소)
+- [x] T08-C03 모든 URL이 새 시크릿 창에서 계정 생성/로그인/인증/초대/비밀번호/OAuth/CAPTCHA 없이 열린다 — 둘 다 로그인 없이 바로 열림(확인됨)
+- [x] T08-C10 결과물 첫 화면이 공개 소개 페이지, 등록 없이 열린다 — evidence-prod/01 스크린샷으로 확인
 - [x] T08-C11 1번 과제 페이지에 이어 붙였고 공개 내용이 그대로 남아 있다
 - [x] T08-C12 실제 개인정보 없음, 더미 데이터라는 사실이 적혀 있다
 - [x] T08-C36 계정 2개, 각각 다른 비공개 내용 — alice-demo / bob-demo
@@ -117,7 +123,7 @@
 > 공개 주소를 바로 열어 3단계 이내 행동으로 30초 안에 끝낼 수 있게 작성.
 
 ### 어디로 가나요
-- (Vercel 배포 URL — TODO, 배포 후 채움)
+- https://makeportfolio-red.vercel.app
 
 ### 세 단계 안에 무엇을 하나요
 1. 위 주소를 연다 — WHO AM I~PROJECTS까지는 그대로 보인다 (1번 과제와 동일).

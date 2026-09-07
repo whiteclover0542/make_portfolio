@@ -2,4 +2,10 @@ node_modules/
 .vercel/
 .env
 .env.local
+.env*
 .data/
+
+# Vercel/Upstash 통합이 자동 설치하는 AI 에이전트용 참고 문서 (제품 코드 아님)
+.agents/
+.claude/
+skills-lock.json

@@ -6,8 +6,8 @@ import { chromium } from "playwright";
 import fs from "node:fs";
 import path from "node:path";
 
-const BASE = "http://localhost:3000";
-const evidenceDir = path.join(process.cwd(), "과제8", "evidence");
+const BASE = process.env.TEST_BASE_URL || "http://localhost:3000";
+const evidenceDir = path.join(process.cwd(), "과제8", process.env.EVIDENCE_DIR || "evidence");
 fs.mkdirSync(evidenceDir, { recursive: true });
 
 const sections = [];
