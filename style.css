@@ -861,15 +861,13 @@ footer#contact {
 }
 
 footer#contact .contact-toggle {
-  background: none;
-  border: none;
   border-bottom: 2px solid var(--white);
   color: var(--white);
+  text-decoration: none;
   font-family: var(--font-display);
   font-size: 1rem;
   letter-spacing: 0.04em;
   padding: 4px 0;
-  cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -882,14 +880,6 @@ footer#contact .contact-toggle::after {
 
 footer#contact .contact-toggle:hover {
   gap: 12px;
-}
-
-footer#contact .contact-email {
-  margin: 16px 0 0;
-}
-
-footer#contact .contact-email a {
-  color: var(--white);
 }
 
 

@@ -11,11 +11,8 @@ document.querySelectorAll('.evidence-toggle').forEach((button) => {
 });
 
 const contactToggle = document.getElementById('contact-toggle');
-const contactEmail = document.getElementById('contact-email');
-if (contactToggle && contactEmail) {
+if (contactToggle) {
   contactToggle.addEventListener('click', () => {
-    const expanded = contactToggle.getAttribute('aria-expanded') === 'true';
-    contactToggle.setAttribute('aria-expanded', String(!expanded));
-    contactEmail.hidden = expanded;
+    contactToggle.textContent = contactToggle.getAttribute('href').replace('mailto:', '');
   });
 }
