@@ -17,7 +17,7 @@
 
 ### 배포 정보 (확정)
 - **결과물 URL**: https://makeportfolio-red.vercel.app
-- **소스 URL**: https://github.com/whiteclover0542/make_portfolio (공개 저장소)
+- **소스 URL**: https://github.com/whiteclover0542/portfolio (공개 저장소)
 - Vercel 프로젝트: `whiteclover/make_portfolio` / 저장소: Upstash for Redis(Vercel Marketplace, 무료) 연결됨 — env: `KV_REST_API_URL`, `KV_REST_API_TOKEN` 등이 Production/Preview/Development 전부에 설정됨
 
 ### 구현 스택 (확정)
@@ -99,7 +99,7 @@
 
 ### 카드 5 — 교차 검증 + 설명서
 - [x] T08-C01 결과물 URL 필드에 HTTPS URL 1개 — https://makeportfolio-red.vercel.app
-- [x] T08-C02 소스 URL 필드에 HTTPS URL 1개 — https://github.com/whiteclover0542/make_portfolio (공개 저장소)
+- [x] T08-C02 소스 URL 필드에 HTTPS URL 1개 — https://github.com/whiteclover0542/portfolio (공개 저장소)
 - [x] T08-C03 모든 URL이 새 시크릿 창에서 계정 생성/로그인/인증/초대/비밀번호/OAuth/CAPTCHA 없이 열린다 — 둘 다 로그인 없이 바로 열림(확인됨)
 - [x] T08-C10 결과물 첫 화면이 공개 소개 페이지, 등록 없이 열린다 — evidence-prod/01 스크린샷으로 확인
 - [x] T08-C11 1번 과제 페이지에 이어 붙였고 공개 내용이 그대로 남아 있다

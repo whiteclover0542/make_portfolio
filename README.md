@@ -2,7 +2,7 @@
 
 Security-minded Full-Stack Developer 개인 포트폴리오 페이지. 빌드 도구 없이 순수 HTML/CSS/JS로 만든 정적 원페이지 사이트입니다.
 
-**🔗 https://whiteclover0542.github.io/make_portfolio/**
+**🔗 https://whiteclover0542.github.io/portfolio/**
 
 ## 소개
 

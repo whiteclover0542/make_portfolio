@@ -7,7 +7,7 @@
 |---|------|------|------|
 | 1 | 배포 경로 정하기 | ✅ | GitHub Pages |
 | 2 | 최소 뼈대 페이지 만들기 | ✅ | index.html |
-| 3 | 저장소 생성 → Pages 켜기 → 링크 확인 | ✅ | https://whiteclover0542.github.io/make_portfolio/ |
+| 3 | 저장소 생성 → Pages 켜기 → 링크 확인 | ✅ | https://whiteclover0542.github.io/portfolio/ (저장소가 이후 make_portfolio→portfolio로 이름 변경되며 주소도 바뀜) |
 | 4 | 대상 문장 작성 | ✅ | "함께 협업할 팀원분들께 제가 누구인지 보여드리기 위해 만들었습니다" |
 | 5 | 공개할 것/공개하지 않을 것 각 3개 정리 | ✅ | `공개비공개점검표.md`, 페이지 내용과 일치 |
 | 6 | 강점 3개 (상황·행동·결과) | ✅ | HOW I WORK 섹션 3개 |
