@@ -9,3 +9,6 @@ node_modules/
 .agents/
 .claude/
 skills-lock.json
+
+# 로컬 확인용 스크래치 파일
+.tmp-*

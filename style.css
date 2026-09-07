@@ -326,6 +326,37 @@ section#projects h2 {
   margin: 0;
 }
 
+.project-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0 0 16px;
+}
+
+.project-stat .v {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  line-height: 1.1;
+  color: var(--black);
+}
+
+.project-stat .k {
+  font-family: -apple-system, "Apple SD Gothic Neo", sans-serif;
+  font-weight: 700;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: var(--gray-700);
+}
+
+.project-card--solo .project-stat .v {
+  color: var(--white);
+}
+
+.project-card--solo .project-stat .k {
+  color: var(--gray-300);
+}
+
 .project-line {
   margin: 6px 0;
   font-size: 0.88rem;
